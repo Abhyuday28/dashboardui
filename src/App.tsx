@@ -124,12 +124,12 @@ function App() {
 
           <div className='col-span-8'>
             
-          <div className='bg-[#f4f4dc] backdrop-blur-3xl pr-2 pb-2'>
+          <div className='bg-[#f9f9ed] backdrop-blur-3xl pr-2 pb-2'>
             
             {/* navbar */}
               <div className="flex justify-between space-x-10 p-6">
                 {/* searchbar */}
-            <div className="flex items-center gap-2 rounded-lg bg-[#f6f6d7] px-4 py-2">
+            <div className="flex items-center gap-2 rounded-lg bg-[#f9f9ed] px-4 py-2">
                <Search className="h-5 w-5 text-gray-500" />
                <input
                  type="text"
@@ -159,26 +159,26 @@ function App() {
           </div>
           
         {/* Metrics Section */}
-          <div className="grid grid-cols-4 gap-4 py-4 px-6 bg-[#f4f4dc]">
+          <div className="grid grid-cols-4 gap-4 py-4 px-6 bg-[#f9f9ed] pt-8">
             {/* New Customers Chart */}
             <div className="flex flex-col justify-between">
 
               <div>
-                <h4 className="text-sm font-medium text-black mx-5 mb-2">New customers</h4>
+                <h4 className="text-sm font-medium text-black mx-5 mb-2 ">New customers</h4>
                 <NewCustomersChart />
               </div>
 
             </div>
 
             {/* Success Rate */}
-            <div className="flex flex-col items-center justify-center">
+            <div className="flex flex-col items-center justify-center pl-30">
               <ArcProgressBar progress={68} label="Successful deals" />
             </div>
           
+
             {/* Tasks in Progress */}
-           
-            <div className="flex flex-col justify-between pb-7 mx-16">
-                {/* <div className="flex flex-col space-y-2"> */}
+            <div className="flex flex-col justify-between pb-7 pl-30 pr-4">
+          
                   <h3 className="text-4xl font-semibold text-black pt-2">
                     {metrics.tasksInProgress}
                   </h3>
@@ -193,7 +193,7 @@ function App() {
               </div>
 
             {/* Prepayments */}
-                <div className="flex flex-col justify-between pb-7 mx-16">
+                <div className="flex flex-col justify-between pb-7 pr-8 pl-16">
     <h3 className="text-3xl font-medium text-black">
       ${metrics.prepayments.toLocaleString("en-US", { minimumFractionDigits: 3 })}
     </h3>
@@ -206,9 +206,8 @@ function App() {
     </div>
   </div>
           </div>
-          </div>
+</div>
           
-
         {/* Main Content */}
         <main className="mt-8 mr-10">
           {/* Deal Pipeline */}
@@ -218,123 +217,6 @@ function App() {
           <OffersentCardsList />
           <DealclosedCardsList />
           </div>
-          {/* <div className="grid grid-cols-4 gap-6">
-            {dealStages.map((stage, stageIndex) => (
-              <div key={stageIndex} className="space-y-4">
-                <div className="flex items-center justify-between">
-                  <h3 className="text-lg font-semibold text-gray-900">
-                    {stage.title}
-                  </h3>
-                  <div className="flex items-center space-x-2">
-                    <span className="text-sm text-gray-500">{stage.count}</span>
-                    <button className="text-gray-400 hover:text-gray-600">
-                      <MoreVertical className="w-4 h-4" />
-                    </button>
-                  </div>
-                </div>
-
-                <div className="space-y-4">
-                  {stage.deals.map((deal, dealIndex) => (
-                    <div
-                      key={dealIndex}
-                      className={`bg-white rounded-lg p-4 shadow-sm border-l-4 ${
-                        deal.featured
-                          ? 'border-l-green-500 bg-gray-900 text-white'
-                          : 'border-l-transparent'
-                      }`}
-                    >
-                      <div className="flex items-start justify-between mb-2">
-                        <h4
-                          className={`font-semibold ${
-                            deal.featured ? 'text-white' : 'text-gray-900'
-                          }`}
-                        >
-                          {deal.company}
-                        </h4>
-                        <button
-                          className={`${
-                            deal.featured ? 'text-white' : 'text-gray-400'
-                          } hover:text-gray-600`}
-                        >
-                          <MoreVertical className="w-4 h-4" />
-                        </button>
-                      </div>
-                      <p
-                        className={`text-sm mb-4 ${
-                          deal.featured ? 'text-gray-300' : 'text-gray-600'
-                        }`}
-                      >
-                        {deal.description}
-                      </p>
-
-                      {deal.featured && (
-                        <div className="space-y-2 mb-4">
-                          <div className="flex items-center space-x-2 text-sm text-gray-300">
-                            <MapPin className="w-4 h-4" />
-                            <span>{deal.address}</span>
-                          </div>
-                          <div className="flex items-center space-x-2 text-sm text-gray-300">
-                            <Mail className="w-4 h-4" />
-                            <span>{deal.email}</span>
-                          </div>
-                          <div className="flex items-center space-x-2 text-sm">
-                            <div className="w-6 h-6 bg-gray-600 rounded-full flex items-center justify-center text-xs">
-                              A
-                            </div>
-                            <span className="text-gray-300">
-                              {deal.contact}
-                            </span>
-                          </div>
-                        </div>
-                      )}
-
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center space-x-2">
-                          <Calendar
-                            className={`w-4 h-4 ${
-                              deal.featured ? 'text-white' : 'text-gray-400'
-                            }`}
-                          />
-                          <span
-                            className={`text-sm ${
-                              deal.featured ? 'text-white' : 'text-gray-500'
-                            }`}
-                          >
-                            {deal.date}
-                          </span>
-                        </div>
-                        <div className="flex items-center space-x-4">
-                          <div className="flex items-center space-x-1">
-                            <MessageCircle
-                              className={`w-4 h-4 ${
-                                deal.featured ? 'text-white' : 'text-gray-400'
-                              }`}
-                            />
-                            <span
-                              className={`text-sm ${
-                                deal.featured ? 'text-white' : 'text-gray-500'
-                              }`}
-                            >
-                              {deal.comments}
-                            </span>
-                          </div>
-                          <div className="flex items-center space-x-1">
-                            <span
-                              className={`text-sm ${
-                                deal.featured ? 'text-white' : 'text-gray-500'
-                              }`}
-                            >
-                              ♡ {deal.likes}
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div> */}
         </main>
             
           </div>

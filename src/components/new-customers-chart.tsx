@@ -111,10 +111,10 @@ export default function NewCustomersChart() {
         </defs>
       </svg>
 
-      <ResponsiveContainer width="100%" height="100%">
+      <ResponsiveContainer width="120%" height="100%">
         <BarChart
           data={chartData}
-          barCategoryGap="10%"
+          barCategoryGap="8%"
           barGap={4}
           margin={{ top: 10, bottom: 0, left: 0, right: 0 }}
         >
